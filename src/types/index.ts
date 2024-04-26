@@ -12,3 +12,9 @@ export type TAntdMenuItem = TMenuItemData & {
 }
 
 export type TMap = { [propsName: string]: any };
+
+export interface IApiResponse<T> {
+  code: string;
+  msg: string;
+  info: T;
+}
