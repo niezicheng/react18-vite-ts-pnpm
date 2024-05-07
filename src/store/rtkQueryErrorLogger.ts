@@ -1,6 +1,6 @@
 import { isRejectedWithValue } from '@reduxjs/toolkit';
 import type { Middleware } from '@reduxjs/toolkit';
-import { message } from 'antd'
+import { message } from 'antd';
 import { TMap } from 'types';
 
 type TErrorPayload = { status: string; data: { info: TMap; msg: string } };

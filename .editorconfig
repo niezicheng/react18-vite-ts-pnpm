@@ -1,0 +1,17 @@
+# Editor configuration, see http://editorconfig.org
+
+root = true                        # 是否为根目录，支持不同层级单独配置
+
+[*]                                # 适用所有文件
+indent_style = space               # tab | space
+indent_size = 2                    # 缩进
+end_of_line = crlf                 # lf | cr | crlf
+charset = utf-8                    # 字符集
+trim_trailing_whitespace = true    # 自动切掉首尾空格
+insert_final_newline = true        # 末尾空行
+
+[*.{js,ts,vue,jsx,tsx}]            # 如何处理这些文件
+indent_size = 2                    # 缩进为 2
+
+[*.md]                             # 如何处理这些文件
+trim_trailing_whitespace = false   # 不自动切掉首尾空格

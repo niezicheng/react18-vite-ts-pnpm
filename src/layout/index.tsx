@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-} from '@ant-design/icons';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Layout, Button, theme } from 'antd';
 import { Outlet } from 'react-router-dom';
-import SiderMenu from 'layout/components/SiderMenu'
+import SiderMenu from 'layout/components/SiderMenu';
 import LayoutContext from 'layout/LayoutContext';
 
 const { Header, Content } = Layout;
@@ -18,7 +15,7 @@ const MainLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [hideMenu, setHideMenu] = useState<boolean>(false);
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer, borderRadiusLG }
   } = theme.useToken();
 
   const toggleCollapsed = (collapsed: boolean) => {
@@ -45,13 +42,13 @@ const MainLayout: React.FC = () => {
         <Layout style={{ height: '100vh' }}>
           <Header style={{ padding: 0, background: colorBgContainer }}>
             <Button
-              type="text"
+              type='text'
               icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               onClick={() => setCollapsed(!collapsed)}
               style={{
                 fontSize: '16px',
                 width: 64,
-                height: 64,
+                height: 64
               }}
             />
           </Header>
@@ -61,7 +58,7 @@ const MainLayout: React.FC = () => {
               padding: 24,
               minHeight: 280,
               background: colorBgContainer,
-              borderRadius: borderRadiusLG,
+              borderRadius: borderRadiusLG
             }}
           >
             <Outlet />

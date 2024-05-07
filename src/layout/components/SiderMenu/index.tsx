@@ -4,9 +4,9 @@ import Logo from 'layout/components/Logo';
 import { isEmpty } from 'lodash-es';
 import { useNavigate, useLocation } from 'react-router-dom';
 import LayoutContext from 'layout/LayoutContext';
-import { menusList } from 'config/menuConfig'
-import { menusListMap, menusListFlat } from 'utils/menu'
-import { TAntdMenuItem } from 'types'
+import { menusList } from 'config/menuConfig';
+import { menusListMap, menusListFlat } from 'utils/menu';
+import { TAntdMenuItem } from 'types';
 
 const { Sider } = Layout;
 
@@ -17,7 +17,7 @@ const SiderMenu = () => {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [openKeys, setOpenKeys] = useState<Array<string>>([]);
 
-  const items: TAntdMenuItem[] = menusListMap(menusList)
+  const items: TAntdMenuItem[] = menusListMap(menusList);
 
   const handleMenuOpen = useCallback(() => {
     const openKeys: string[] = [];
@@ -41,8 +41,8 @@ const SiderMenu = () => {
     }
   }, [handleMenuOpen, collapsed]);
 
-  const handleMenuClick = (item: { key: string; }) => {
-    setSelectedKeys([item?.key])
+  const handleMenuClick = (item: { key: string }) => {
+    setSelectedKeys([item?.key]);
     navigate(item?.key || '');
   };
 
@@ -65,8 +65,8 @@ const SiderMenu = () => {
     >
       <Logo />
       <Menu
-        theme="dark"
-        mode="inline"
+        theme='dark'
+        mode='inline'
         items={items}
         selectedKeys={selectedKeys}
         openKeys={openKeys as string[]}
@@ -74,7 +74,7 @@ const SiderMenu = () => {
         onOpenChange={handleMenuOpenChange}
       />
     </Sider>
-  )
+  );
 };
 
 export default SiderMenu;

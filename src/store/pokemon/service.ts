@@ -12,7 +12,7 @@ export const pokemonService = createApi({
         url: `${api.getPokemonApi}/bulbasaur`,
         method: 'get',
         params
-      }),
+      })
     })
   })
 });

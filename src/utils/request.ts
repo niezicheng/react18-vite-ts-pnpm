@@ -41,11 +41,13 @@ axios.interceptors.response.use(
     const { config, data } = response;
     // 拦截示例模拟接口返回数据，后期正式使用时可以删除
     if (config.url === '/api/v2/pokemon/bulbasaur') {
-      return Promise.resolve({ data: {
-        code: '0',
-        info: data,
-        msg: 'success'
-      }});
+      return Promise.resolve({
+        data: {
+          code: '0',
+          info: data,
+          msg: 'success'
+        }
+      });
     }
     // 处理下载文件
     if (Object.prototype.toString.call(data) === '[object Blob]') {

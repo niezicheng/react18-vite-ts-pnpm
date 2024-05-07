@@ -1,12 +1,12 @@
 export type TPokemonState = {
-  value: number
-}
+  value: number;
+};
 
 export type TPokemonRes = {
   species: {
-    name: string,
-  },
+    name: string;
+  };
   sprites: {
-    front_shiny: string,
-  }
-}
+    front_shiny: string;
+  };
+};

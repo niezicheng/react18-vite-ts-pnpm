@@ -39,7 +39,7 @@ export const menusList: TMenuItemData[] = [
         name: '个人信息',
         path: '/overall/personal',
         icon: 'AppstoreOutlined'
-      },
+      }
     ]
   }
 ];

@@ -1,8 +1,8 @@
-import React from 'react'
-import * as Icons from '@ant-design/icons'
-import { TMenuItemData, TAntdMenuItem } from 'types'
+import React from 'react';
+import * as Icons from '@ant-design/icons';
+import { TMenuItemData, TAntdMenuItem } from 'types';
 
-const iconList: any = Icons
+const iconList: any = Icons;
 
 /**
  * menusListMap 菜单配置映射
@@ -10,18 +10,20 @@ const iconList: any = Icons
  * @returns 新的菜单对象
  */
 export const menusListMap = (menus: TMenuItemData[]): TAntdMenuItem[] => {
-  return menus.map((menu) => {
-    const { name, children, icon, path } = menu
-    const newMenu: any = { key: path, label: name }
-    if (icon) {
-      newMenu.icon = React.createElement(iconList[icon])
-    }
-    if (children) {
-      newMenu['children'] = menusListMap(children)
-    }
-    return newMenu
-  }) || []
-}
+  return (
+    menus.map(menu => {
+      const { name, children, icon, path } = menu;
+      const newMenu: any = { key: path, label: name };
+      if (icon) {
+        newMenu.icon = React.createElement(iconList[icon]);
+      }
+      if (children) {
+        newMenu['children'] = menusListMap(children);
+      }
+      return newMenu;
+    }) || []
+  );
+};
 
 /**
  * menusListMap 菜单配置映射

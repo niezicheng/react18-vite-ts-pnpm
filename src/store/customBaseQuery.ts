@@ -10,7 +10,9 @@ type TCustomBaseQueryParams = { baseUrl?: string; isLive?: boolean };
  * @returns
  */
 export const customBaseQuery =
-  ({ baseUrl = '' }: TCustomBaseQueryParams = { baseUrl: '' }): BaseQueryFn<{
+  (
+    { baseUrl = '' }: TCustomBaseQueryParams = { baseUrl: '' }
+  ): BaseQueryFn<{
     url: string;
     method?: AxiosRequestConfig['method'];
     data?: AxiosRequestConfig['data'];

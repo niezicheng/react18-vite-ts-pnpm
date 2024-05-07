@@ -4,10 +4,8 @@ import pokemonReducer, { pokemonService } from 'store/pokemon';
 export const reducers = {
   pokemon: pokemonReducer,
   // 注入 service
-  [pokemonService.reducerPath]: pokemonService.reducer,
+  [pokemonService.reducerPath]: pokemonService.reducer
 };
 
 // 注入 middleware
-export const middlewares = [
-  pokemonService.middleware,
-];
+export const middlewares = [pokemonService.middleware];

@@ -3,13 +3,13 @@ export type TMenuItemData = {
   name: string;
   path: string;
   icon?: string;
-  children?: TMenuItemData[]
-}
+  children?: TMenuItemData[];
+};
 
 export type TAntdMenuItem = TMenuItemData & {
   label: string;
   key: string;
-}
+};
 
 export type TMap = { [propsName: string]: any };
 
