@@ -151,3 +151,97 @@ npx husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'
 ```
 
 更多的规范可以参考我的这篇文章 [Vue3 项目模版搭建（二）](https://juejin.cn/post/7064471026532352037)
+
+## Tailwind CSS
+
+### 安装
+
+```zsh
+pnpm install tailwindcss postcss autoprefixer -D
+```
+
+```zsh
+npx tailwindcss init -p
+```
+
+### 配置
+
+在根目录下创建 `tailwind.config.ts` 文件
+
+```typescript
+/** @type {import('tailwindcss').Config} */
+
+export default {
+  content: [
+    "./index.html",
+    './src/**/*.{js,ts,jsx,tsx}'
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+  corePlugins: {
+    // 禁止 tailwind 的默认样式
+    preflight: false
+  }
+}
+```
+
+在根目录下创建 `postcss.config.ts` 文件
+
+```typescript
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+```
+
+在 `vite.config.ts` 文件中添加 `postcss` 配置
+
+```typescript
+export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [
+        tailwindcss,
+        autoprefixer,
+      ]
+    }
+  }
+});
+```
+
+添加 `assets/style/tailwind.less` 文件，引入 `tailwindcss` 样式
+
+```less
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+在 `src/main.ts` 文件中引入 `tailwindcss` 样式
+
+```typescript
+import 'assets/style/tailwind.less'
+```
+
+### 使用
+
+解决样式冲突问题
+
+方式一：在 `tailwind.config.ts` 文件中添加 `purge` 配置
+
+```typescript
+/** @type {import('tailwindcss').Config} */
+
+export default {
+  corePlugins: {
+    // 禁止 tailwind 的默认样式
+    preflight: false
+  }
+}
+```
+
+方式二：引入其他样式之前导入 Tailwind css 样式文件
