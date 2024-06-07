@@ -1,16 +1,21 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import MainLayout from 'layout';
-import { Loadable } from 'components';
+import { Loadable, ErrorBoundary } from 'components';
 
 const HomePage = Loadable(lazy(() => import('pages/home')));
 const ExampleOne = Loadable(lazy(() => import('pages/example/example-one')));
 const ExampleTwo = Loadable(lazy(() => import('pages/example/example-two')));
 const Personal = Loadable(lazy(() => import('pages/overall/personal')));
+const NotFound = Loadable(lazy(() => import('pages/notFound')));
 
 const mainRoutes = {
   path: '/',
-  element: <MainLayout />,
+  element: (
+    <ErrorBoundary>
+      <MainLayout />
+    </ErrorBoundary>
+  ),
   children: [
     {
       path: '/',
@@ -33,7 +38,7 @@ const mainRoutes = {
       element: <Personal />
     },
     // 路由追加，勿删此注释
-    { path: '*', element: <div>Not Found</div> }
+    { path: '*', element: <NotFound /> }
   ]
 };
 

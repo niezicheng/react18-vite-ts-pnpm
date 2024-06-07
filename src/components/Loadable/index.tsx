@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Spin } from 'antd';
 import { JSX } from 'react/jsx-runtime';
+import { ErrorBoundary } from 'components';
 
 export const Loader = () => (
   <div
@@ -19,9 +20,11 @@ export const Loader = () => (
 const Loadable = (Component: React.LazyExoticComponent<() => JSX.Element>) => {
   return function LoadableComponent(props: JSX.IntrinsicAttributes) {
     return (
-      <Suspense fallback={<Loader />}>
-        <Component {...props} />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<Loader />}>
+          <Component {...props} />
+        </Suspense>
+      </ErrorBoundary>
     );
   };
 };

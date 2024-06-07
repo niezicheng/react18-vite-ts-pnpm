@@ -4,6 +4,7 @@ import { Layout, Button, theme } from 'antd';
 import { Outlet } from 'react-router-dom';
 import SiderMenu from 'layout/components/SiderMenu';
 import LayoutContext from 'layout/LayoutContext';
+import { ErrorBoundary } from 'components';
 
 const { Header, Content } = Layout;
 
@@ -27,45 +28,49 @@ const MainLayout: React.FC = () => {
   };
 
   return (
-    <LayoutContext.Provider
-      value={{
-        siderWidth,
-        siderCollapsedWidth,
-        collapsed,
-        toggleCollapsed,
-        hideMenu,
-        toggleHideMenu
-      }}
-    >
-      <Layout>
-        <SiderMenu />
-        <Layout style={{ height: '100vh' }}>
-          <Header style={{ padding: 0, background: colorBgContainer }}>
-            <Button
-              type='text'
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: '16px',
-                width: 64,
-                height: 64
-              }}
-            />
-          </Header>
-          <Content
-            style={{
-              margin: '24px 16px',
-              padding: 24,
-              minHeight: 280,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG
-            }}
-          >
-            <Outlet />
-          </Content>
+    <ErrorBoundary>
+      <LayoutContext.Provider
+        value={{
+          siderWidth,
+          siderCollapsedWidth,
+          collapsed,
+          toggleCollapsed,
+          hideMenu,
+          toggleHideMenu
+        }}
+      >
+        <Layout>
+          <SiderMenu />
+          <ErrorBoundary>
+            <Layout style={{ height: '100vh' }}>
+              <Header style={{ padding: 0, background: colorBgContainer }}>
+                <Button
+                  type='text'
+                  icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                  onClick={() => setCollapsed(!collapsed)}
+                  style={{
+                    fontSize: '16px',
+                    width: 64,
+                    height: 64
+                  }}
+                />
+              </Header>
+              <Content
+                style={{
+                  margin: '24px 16px',
+                  padding: 24,
+                  minHeight: 280,
+                  background: colorBgContainer,
+                  borderRadius: borderRadiusLG
+                }}
+              >
+                <Outlet />
+              </Content>
+            </Layout>
+          </ErrorBoundary>
         </Layout>
-      </Layout>
-    </LayoutContext.Provider>
+      </LayoutContext.Provider>
+    </ErrorBoundary>
   );
 };
 
